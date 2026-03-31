@@ -1,1 +1,55 @@
+{
+  "name": "LectorTMO",
+  "baseUrl": "https://lectortmo.online",
+  "lang": "es",
+  "type": "manga",
 
+  "headers": {
+    "Referer": "https://lectortmo.online/",
+    "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X)"
+  },
+
+  "routes": {
+    "popular": "/biblioteca",
+    "search": "/biblioteca?texto={query}"
+  },
+
+  "selectors": {
+    "popular": ".element",
+    "popularTitle": ".element-title",
+    "popularUrl": "a@href",
+    "popularCover": "img@data-src, img@src",
+
+    "search": ".element",
+    "searchTitle": ".element-title",
+    "searchUrl": "a@href",
+    "searchCover": "img@data-src, img@src",
+
+    "detailTitle": "h1",
+    "detailCover": ".thumbnail img@src, .thumbnail img@data-src",
+    "detailDescription": ".description, .summary",
+
+    "chapters": ".chapters li",
+    "chapterName": "a",
+    "chapterUrl": "a@href"
+  },
+
+  "chapter": {
+    "pageFallbackSelectors": [
+      ".viewer-container img@src",
+      ".viewer-container img@data-src",
+      ".reading-content img@src"
+    ],
+
+    "pagesScript": "
+      let images = [];
+      document.querySelectorAll('img').forEach(img => {
+        let src = img.getAttribute('data-src') || img.getAttribute('src');
+        if (src && (src.includes('mangas') || src.includes('chapters'))) {
+          images.push(src);
+        }
+      });
+      console.log(images.join('\\n'));
+    "
+  }
+}
