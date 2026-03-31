@@ -3,8 +3,9 @@
     "name": "LectorTMO",
     "pkg": "lector.tmo",
     "lang": "es",
+    "code": 1,
     "version": "1.0.0",
-    "apk": "https://raw.githubusercontent.com/Crow777777/tachimanga-extensions/main/extensions/tmo.json",
-    "icon": ""
+    "nsfw": 0,
+    "apk": "https://raw.githubusercontent.com/Crow777777/tachimanga-extensions/main/extensions/tmo.json"
   }
 ]
